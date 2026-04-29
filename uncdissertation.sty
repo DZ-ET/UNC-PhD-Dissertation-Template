@@ -1,27 +1,17 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{uncdissertation}[1997/11/25]
-%%%%%%%%%%%%%%%%%% Change to your department %%%%%%%%%%%%%%%%%%%%%%
 \def\mydepartment{Department of Economics} 
-%%%%
 
 
 
 \RequirePackage{ifthen}
-%\RequirePackage{doublespace}
 \RequirePackage{setspace}   % Changed doublespace to setspace -- MCW 4/13/03
 \RequirePackage{comment}
 
-% Make copyright use uppercase C
-%\DeclareTextCommandDefault{\copyright}{{\textcircled{C}}}
-% Make copyright symbol fit in circle and be sans-serif  -MCW 5/21/03
 \DeclareTextCommandDefault{\copyright}{{\textcircled{\textsf{c}}}}
 
 
-% Set up spacing.  Magic numbers are from p. 53 of The LaTeX Companion
-% (Goosens, Mittlebach, Samarin; Addison-Wesley Publishing Co., 1994).
-% [XI. SPACING AND INDENTATION]
 
-                                 % Set up one and one-half spacing
 \ifthenelse{\@ptsize = 0}{\setstretch{1.25}}{} % 10-point
 \ifthenelse{\@ptsize = 1}{\setstretch{1.21}}{} % 11-point
 \ifthenelse{\@ptsize = 2}{\setstretch{1.24}}{} % 12-point
@@ -58,15 +48,12 @@
 \DeclareOption{narrow}{\unc@narrow}
 \DeclareOption{debug}{\thesisdebugmargins}
 
-% Set up margins [X. MARGINS]
-                        % These you can change
 \def\unc@pageheight  {11in}
 \def\unc@pagewidth   {8.5in}
 \def\unc@leftmargin  {1in}   % use 1 5/16'' margin -MCW
 \def\unc@rightmargin {1in}   % use 1 1/16'' margin -MCW
 \def\unc@topmargin   {1in}
 \def\unc@bottommargin{1in}
-%\def\unc@bottommargin{.875in}   % use 1 1/16'' margin -MCW
 
 \def\unc@narrow{%
 \typeout{(Using slightly narrow margins for mpar)}
@@ -80,35 +67,26 @@
 }
 
 \def\unc@setmargins{%
-                        % Don't change these
 \headheight 2ex
 \headsep .5in                 % [XII. PAGINATION]
 \footskip .5in                % [XII. PAGINATION]
 \advance\footskip 1ex
-%  \parindent 5em                % [XI. SPACING AND INDENTATION]
 
-%% textheight = unc@pageheight - unc@topmargin - unc@bottommargin - extra
 \textheight\unc@pageheight
 \advance\textheight -\unc@topmargin
 \advance\textheight -\unc@bottommargin
 \advance\textheight -\headheight
-%  \advance\textheight -\headsep
 \advance\textheight -1ex        %extra footskip
-%  \advance\textheight -\footskip
 
-%% topmargin = unc@topmargin - 1in - voffset
 \topmargin\unc@topmargin
 \advance\topmargin -1in
 \advance\topmargin -\voffset
 \advance\topmargin -\headsep
-%  \advance\topmargin \headheight
 
-%% textwidth = unc@pagewidth - unc@leftmargin - unc@rightmargin
 \textwidth\unc@pagewidth
 \advance\textwidth -\unc@leftmargin
 \advance\textwidth -\unc@rightmargin
 
-%% oddsidemargin = unc@leftmargin - 1in - hoffset
 \oddsidemargin\unc@leftmargin
 \advance\oddsidemargin -1in
 \advance\oddsidemargin -\hoffset
@@ -155,17 +133,13 @@
 }
 
 
-% Defaults
 
 \newcommand{\unc@draftnote}{}
 
 \def\thesistype#1{\gdef\unc@type{#1}}
-% \gdef\unc@type{Dissertation}
 
 \def\thesisuniversity#1{\gdef\unc@university{#1}}
-% \gdef\unc@university{The University of North Carolina at Chapel Hill}
 
-% 2002 - supposed to be lower case.  TCH
 \gdef\unc@type{dissertation} \gdef\unc@university{University of North Carolina at Chapel Hill}
 
 \def\thesisdegree#1{\gdef\unc@degree{#1}}
@@ -210,50 +184,30 @@
 \def\thesismemberb#1{\gdef\unc@memberb{#1}}
 \def\thesismemberc#1{\gdef\unc@memberc{#1}}
 
-% title should be large and bold
 \def\thesistitlefont#1{\gdef\unc@titlefont{#1}}
 \gdef\unc@titlefont{\large\sc}
-% author font should be 12 pt.    -MCW 5/22/03
 \def\thesisauthorfont#1{\gdef\unc@authorfont{#1}}
 \ifthenelse{\@ptsize=0}{\gdef\unc@authorfont{\large}}{}
 \ifthenelse{\@ptsize=1}{\gdef\unc@authorfont{\large}}{}
 \ifthenelse{\@ptsize=2}{\gdef\unc@authorfont{}}{}
-% titlepage font should be 12 pt.    -MCW 5/22/03
-% (as specified by margin lady Sue)
 \def\thesistitlepagefont#1{\gdef\unc@titlepagefont{#1}}
 \ifthenelse{\@ptsize=0}{\gdef\unc@titlepagefont{\large}}{}
 \ifthenelse{\@ptsize=1}{\gdef\unc@titlepagefont{\large}}{}
 \ifthenelse{\@ptsize=2}{\gdef\unc@titlepagefont{}}{}
 
-% Macros
 
-% 5/20/2003 changes by MCW
-%      - Title and and "by" author should be single-spaced
-%      - 1 inch between title and "by" (according to sample title page
-%      in grad school dissertation guidelines document)
-%      - 1 inch between author and statement
-%      - single-space between "Chapel Hill" and year
 \def\thesismaketitle{
   \pagenumbering{roman}\setcounter{page}{1}\thispagestyle{empty}
   \begin{spacing}{1}\reset@font
-% To be exactly 2 in from top of page on hplj146 with 11 pt base font
-    %\vspace*{0.96875 in}
-    % changed by RYang for 12pt font
     \vspace*{.8125in}
     \begin{center}
       \begin{spacing}{1}
         {\unc@titlefont\unc@adjusttitlespacing\unc@title}
       \end{spacing}
-%      \vspace{1 in}
-% To be exactly 1 in from name with 11 pt base font
     \vspace{1 in}
-% Use title page font for everything on the title page except the title
-%Changed by David Gotz.  The 2004-2005 Guide to Theses and Dissertations does not include the word "by"
   
-%	{\unc@titlepagefont by} \\
       	{\unc@titlepagefont \unc@author}
     \end{center}
-% To be exactly 1 in from name with 11 pt base font
      \vspace{.8125in}
    \begin{center}
   \begin{minipage}{6.35in}
@@ -264,12 +218,10 @@
     \end{center}
   \end{minipage}
 \end{center}
-% To fit with 6 signature lines
     \vspace{.6875in} %% PKE 3/29/07: CHANGED FROM .2 TO .9in
     \begin{center}
       {\unc@titlepagefont \unc@location} \\
       {\unc@titlepagefont \unc@year} \\
-% To fit with 6 signature lines
       \vspace{1.0625 in}
      \hfill\unc@signatures
     \end{center}
@@ -277,48 +229,26 @@
   \newpage
   }
 
-%\def\unc@signatureline#1#2{\vspace{0.5in}\hbox to 3in{\hfil\shortstack{\vrule
-% change made to fit 6 signature lines -MCW  5/5/03
 \def\unc@signatureline#1#2{\vspace{0.35in}\hbox to 3in{\hfil\shortstack{\vrule
       width 3in height 0.0pt\\{\unc@titlepagefont #1, #2}}}}
 
 
 
 
-%% %% PKE 3/30/07: NOTE: SPRING, 2007 UNC WOULD NOT ACCEPT W/ SIGNATURE LINES. FOLLOWING
-%% %% CHANGES MADE TO ELIMINATE SIGNATURE LINES
 
 \def\unc@signatures{
-%  \begin{minipage}{1.95in}                                               %% PKE 3/30/07: CHANGED 3in to 3.1in
   \begin{minipage}{2.3in}                                               %% KM: changed the width of minipage from 1.95in to 1.5in in 2014.
-                                                                             %%       appropriate width depends on the longest name of your thesis members, 
-                                                                             %%       in my case "Saraswata Chaudhuri".
-                                                                             %%       UNC requires that there should be 1in margin between the right edge
-                                                                             %%       and the last character of the longest name (in my case "i").
-                                                                             %%       You need to find an appropriate width to meet this requirement.
-% ``Approved by:'' should be centered  -MCW 5/20/03
     \begin{flushleft}{\unc@titlepagefont Approved by:}\end{flushleft}
     \@ifundefined{unc@advisora}{}%
     \begin{flushleft}{\unc@advisora}\end{flushleft}  %% PKE 3/30/07: ADDED LINE
-%       {\unc@signatureline{\unc@advisora}{\unc@advisortitle}}      %% PKE 3/30/07: DELETED LINE
-%    \@ifundefined{unc@advisorb}{}%                 %% PKE 3/30/07: DELETED LINE
-%   \begin{center}{\unc@advisorb}, {\unc@advisortitle}\end{center}  %% PKE 3/30/07: ADDED LINE
-%       {\unc@signatureline{\unc@advisorb}{\unc@advisortitle}}          %% PKE 3/30/07: DELETED LINE
-    %\@ifundefined{unc@readera}{}%
-    %\begin{flushleft}{\unc@readera}, {\unc@readertitle}\end{flushleft}    %% PKE 3/30/07: ADDED LINE
         \@ifundefined{unc@readera}{}%
     \begin{flushleft}{\unc@readera}\end{flushleft}    %% PKE 3/30/07: ADDED LINE
     
     
     
     
-%       {\unc@signatureline{\unc@readera}{\unc@readertitle}}            %% PKE 3/30/07: DELETED LINE
     \@ifundefined{unc@readerb}{}%
     \begin{flushleft}{\unc@readerb}\end{flushleft}    %% PKE 3/30/07: ADDED LINE
-%       {\unc@signatureline{\unc@readerb}{\unc@readertitle}}            %% PKE 3/30/07: DELETED LINE
-%    \@ifundefined{unc@readerc}{}%
-%   \begin{center}{\unc@readerc}, {\unc@readertitle}\end{center}    %% PKE 3/30/07: ADDED LINE
-%       {\unc@signatureline{\unc@readerc}{\unc@readertitle}}            %% PKE 3/30/07: DELETED LINE
     \@ifundefined{unc@readerd}{}%
        {\unc@signatureline{\unc@readerd}{\unc@readertitle}}
     \@ifundefined{unc@readere}{}%
@@ -329,27 +259,18 @@
        {\unc@signatureline{\unc@readerg}{\unc@readertitle}}
        \@ifundefined{unc@membera}{}%
     \begin{flushleft}{\unc@membera}\end{flushleft}   %% PKE 3/30/07: ADDED LINE
-%      {\unc@signatureline{\unc@membera}{\unc@membertitle}}            %% PKE 3/30/07: DELETED LINE
     \begin{flushleft}{\unc@memberb}\end{flushleft}   %% PKE 3/30/07: ADDED LINE
      \@ifundefined{unc@memberb}{}%
-%      {\unc@signatureline{\unc@memberb}{\unc@membertitle}}            %% PKE 3/30/07: DELETED LINE
           \@ifundefined{unc@memberc}{}%
       {\unc@signatureline{\unc@memberc}{\unc@membertitle}}
   \end{minipage}
   }
 
-% 2002 - ALL RIGHTS RESERVED supposed to be uppercase - TCH
 \def\thesismakecopyright{
-  % Added following line by JCK to make start on right-hand side
-%Changed by David Gotz.  The 2004-2005 Guide to Theses and Dissertations states that the copyright should be
-%on page 'ii', immediately following the title page.
-  % \cleardoublepage
   \thispagestyle{plain}
   \mbox{}\vfill
   \begin{spacing}{1.1}
     \begin{center}
-% If using copyright symbol, don't need the word "Copyright" -MCW 5/21/03
-%      Copyright \copyright{} \unc@year \\
       \copyright{} \unc@year \\
       \unc@author \\
       ALL RIGHTS RESERVED
@@ -399,7 +320,6 @@
   \renewcommand{\ps@plain}{%
     \renewcommand{\@oddhead}{\hfil\textrm{\thepage}}%
     \renewcommand{\@evenhead}{\textrm{\thepage}\hfil}%
-% Added Feb 2003 by MCW -- adds initials to draft footer
     \@ifundefined{unc@authorinit}{
        \renewcommand{\@oddfoot}{\hfil Draft of \unc@timestamp}
        \renewcommand{\@evenfoot}{Draft of \unc@timestamp\hfil \unc@authorinit}
@@ -423,11 +343,6 @@
 
 \def\unc@nodraft{%
   \renewcommand{\ps@plain}{%
-%    \renewcommand{\@oddhead}{\hfil\textrm{\thepage}}%    THESE FOUR LINES
-%    \renewcommand{\@evenhead}{\textrm{\thepage}\hfil}%   SHOULD BE USED FOR
-%    \renewcommand{\@oddfoot}{}%                          PAGE NUMBERS AT THE
-%    \renewcommand{\@evenfoot}{}%                         TOP, ALIGNED TO THE SIDE
-% David Gotz: These next four lines create centered page numbers at the bottom.
     \renewcommand{\@oddhead}{}%
     \renewcommand{\@evenhead}{}%
     \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
@@ -458,20 +373,15 @@
 \def\unc@timestamp{\today{} at
   \two@digits{\the\unc@hour}:\two@digits{\the\unc@minute}}
 
-% Added Feb 2003 by MCW -- adds initials to draft footer
 \def\authorinit#1{\gdef\unc@authorinit{#1}}
 
-%% Redefine a bunch of stuff...
 
-% Added by David Gotz
-% The 2004-2005 guide specifies that these headings should be in all caps.
 \renewcommand{\abstractname}{\normalsize{Abstract}} %% PKE 3/29/07: CHANGED {ABSTRACT} to {Abstract}
 \renewcommand{\contentsname}{\normalsize{TABLE OF CONTENTS}}
 \renewcommand{\listtablename}{\normalsize{LIST OF TABLES}}
 \renewcommand{\listfigurename}{\normalsize{LIST OF FIGURES}}
 \renewcommand{\bibname}{\normalsize{REFERENCES}}
 
-% 2002 - ABSTRACT first, then author: title
 \renewenvironment{abstract}{%
   \cleardoublepage\thispagestyle{plain}
   \global\@topnum\z@
@@ -497,9 +407,7 @@
   {\cleardoublepage\thispagestyle{plain}\global\@topnum\z@\@afterindentfalse}%
   {\newpage}
 
-% 2002 - ACKNOWLEDGMENTS in upper case - TCH
 \newcommand{\acknowledgmentsname}{\normalsize{Acknowledgments}}
-%\newcommand{\acknowledgmentsname}{ACKNOWLEDGMENTS}
 \newenvironment{acknowledgments}{%\chapter*{\normalsize{\MakeUppercase{\acknowledgmentsname}}}}{}
 	\phantom{} %\vspace{1in}
      \begin{center}\huge{\MakeUppercase{\textbf{\acknowledgmentsname}}}\end{center}} %% PKE 3/29/07: ADDED THIS LINE
@@ -514,24 +422,20 @@
 \def\unc@first{0}
 \renewcommand{\chapter}{
   \if@openright\cleardoublepage\else\clearpage\fi
-  % Modified to following by JCK to fix page numbering in table of contents
 	\cleardoublepage
   \thispagestyle{plain}
   \global\@topnum\z@
   \@afterindentfalse
   \secdef\@chapter\@schapter}
   
-% for \chapter
 \def\@makechapterhead#1
 {\cleardoublepage %
 
   \ifnum\unc@first=0%
      \def\unc@first{1}\pagenumbering{arabic}\setcounter{page}{1}\fi
-   %Following line added by JCK 7/10/00 to fix Appendix page number
   \ifthenelse{\equal{\appendixname}{\@chapapp}}{}{\thispagestyle{fancy}}%
   {\parindent \global\@topnum\z@ \raggedright \reset@font
     \begin{center}
-      % Following 3 lines added by JCK 7/10/00 to fix Appendix margins
       \ifthenelse{\equal{\appendixname}{\@chapapp}}
         {}
         {\begin{spacing}{1}\vspace*{1.13in}\end{spacing}}
@@ -546,8 +450,6 @@
     \end{center}
     \vskip 40\p@}}
 
-% 2002 - Not supposed to list acknowledgments in the TOC - TCH
-% \chapter*
 \def\@makeschapterhead#1{%\cleardoublepage%
  
   {\parindent \z@   \raggedright
@@ -560,7 +462,6 @@
   
   {\unc@adjustbibspacing}{\relax}%
     
-      % Following 3 lines added by JCK 7/10/00 to fix certain margins
       \ifthenelse{\equal{#1}{\bibname} \or \equal{#1}{\listfigurename} \or
                   \equal{#1}{\listtablename} \or
                   \equal{#1}{\listabbreviationname}}
@@ -574,7 +475,6 @@
     }}
 
 
-% START ABBREVIATION SUPPORT
 \def\xspace{\futurelet\next\@xspace}
 \def\@xspace{%
   \ifx\next\bgroup\else
@@ -640,8 +540,6 @@
   }
 
 \def\abbreviationline#1#2{\makebox[1in][l]{\textbf{#1}} #2\newline}
-%\def\listabbreviationname{List of Abbreviations}
-% David Gotz changed this to be in all capitols.
 \def\listabbreviationname{LIST OF ABBREVIATIONS}
 \newcommand{\listofabbreviations}{%
     \if@twocolumn
@@ -682,10 +580,8 @@
   \else\gdef#1{#2\xspace}%
   \fi
   }
-% END ABBREVIATION SUPPORT
 
 \newlength{\@shortcaptionsize}
-% START OF SHORT CAPTION SUPPORT FOR SIDEWAYS FIGURES
 \def\shortcaption{\refstepcounter\@captype \@dblarg{\@shortcaption\@captype}}
 \long\def\@shortcaption#1[#2]#3{\par\addcontentsline{\csname
   ext@#1\endcsname}{#1}{\protect\numberline{\csname
@@ -706,7 +602,6 @@
   \fi
   \vskip\belowcaptionskip}
 
-% END OF SHORT CAPTION SUPPORT FOR SIDEWAYS FIGURES
 
 \ExecuteOptions{nodraft}
 \unc@setmargins
@@ -716,10 +611,8 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%these are packages that I used at some point, but I don't think are necessary for the formatting of the dissertation.  You can add or remove packages to this list.  However, you may add packages that conflict with the later packages that format everything correctly, so you've been warned.
 \usepackage{amsmath} % Some math symbols
 \usepackage{amssymb}
 \usepackage{appendix}
@@ -734,10 +627,8 @@
 \usepackage{mdwlist}
 \usepackage{multirow}
 \usepackage{rotating}
-\usepackage{setspace}
 \usepackage{subfig}
 \usepackage{tikz}
-%\usepackage{times}
 \usepackage{url}
 \usepackage{verbatim}
 \usetikzlibrary{decorations.pathreplacing}
@@ -747,11 +638,9 @@
 \brokenpenalty=10000
 \urlstyle{same}
 
-%everything below this are packages that are necessary for the proper formating of the dissertation.
 
 \usepackage{natbib} % For references
 \bibpunct{(}{)}{;}{a}{}{,} % Reference punctuation
-%proper formating for titles (Chapter, section, subsection, etc.)
 
 \usepackage[compact]{titlesec}
 \titleformat{\chapter}[display]{\normalfont\filcenter}{\MakeUppercase\chaptertitlename\ \thechapter}{12pt}{\MakeUppercase}
@@ -778,14 +667,11 @@
 \makeatletter
 \newcommand\tinyv{\@setfontsize\tinyv{2pt}{6}}
 \makeatother
-%\titleformat{\chapter}{\centering\normalsize\bfseries}{\thechapter}{1em}{}
 \titleformat{\section}{\normalsize\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalsize}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\small}{\thesubsubsection}{1em}{}
 
-%This part formats the table of contents
 \usepackage[subfigure]{tocloft}
-%\usepackage{tocloft} %change table of contents
 \renewcommand{\contentsname}{TABLE OF CONTENTS}
 \renewcommand{\cfttoctitlefont}{\hfill\normalsize\bfseries}
 \renewcommand{\cftaftertoctitle}{\hfill\mbox{}}
@@ -814,13 +700,9 @@
 
 
 
-% UNC front-matter compliance fixes
 \makeatletter
-% Force long TOC entries to wrap earlier and avoid awkward chapter-title spacing.
 \cftsetrmarg{6em}
 
-% Rebuild chapter entries in the TOC so long titles wrap cleanly, without
-% stretched interword spacing or hyphenated breaks such as INTE-/GRATING.
 \renewcommand*{\l@chapter}[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
@@ -841,8 +723,6 @@
      \cftchapfillnum{#2}}%
   \fi}
 
-% Rebuild the abstract title block so the advisor line is centered and sits
-% directly one single-spaced line below the title.
 \renewenvironment{abstract}{%
   \cleardoublepage\thispagestyle{plain}%
   \global\@topnum\z@
@@ -864,13 +744,11 @@
 }{\vfill\newpage}
 \makeatother
 
-%proper spacing for the footnotes
 \addtolength{\skip\footins}{1ex}%% push 1st ftn further from text
 \settoheight{\footnotesep}{\footnotesize !}%% space between footnotes
 \addtolength{\footnotesep}{11.25pt}%% 10.25pt for 11pt size
 \brokenpenalty=10000 % End of footnote spacing commands.-SBL
 
-%%%% footnote
 \makeatletter
 \renewcommand\footnoterule{%
   \kern-3\p@
@@ -887,27 +765,21 @@
 
 \usepackage[dvipsnames]{xcolor}
 \definecolor{nberblue}{RGB}{0,90,155}
-\usepackage{hyperref}
 \hypersetup{
     colorlinks,
     citecolor=Blue, % blue
         linkcolor=purple,
     urlcolor= nberblue
 }
-\usepackage{setspace}
 \doublespacing
 
 
 \usepackage{amsfonts}
 \usepackage{longtable}
-\usepackage{rotating}
 \usepackage{bbm}
-\usepackage{verbatim}
 \usepackage{adjustbox}
 \usepackage{float}
-\usepackage{appendix}
 \usepackage{amsthm}
-\usepackage{hyperref}
 \usepackage{pbox}
 \usepackage{nth}
 
@@ -917,17 +789,12 @@
 \usepackage{etoolbox}
 
 \usepackage{lipsum}   % for generating dummy text
-\usepackage{setspace} % for changing line spacing
 \usepackage[hang,flushmargin]{footmisc}  %for footnote no space
-\usepackage{comment}
 \usepackage{array}    % for using the 'm' column type in tabular
-% Manually set baseline skip for single-spacing (change 1.0 to adjust spacing)
 \renewcommand{\arraystretch}{1.0}
 
 
-%%%my own comments
 \usepackage{import}
-\usepackage{booktabs}
 \renewcommand{\labelitemi}{}
 \makeatletter \renewenvironment{proof}[1][\proofname]
 {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\bfseries#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse} \makeatother
@@ -943,21 +810,16 @@
 \newtheorem{sol}{Solution}[chapter]
 
 
-\usepackage{xcolor}
 \usepackage{graphics}
 \usepackage{epsfig}
 
-%smaller gap
 \newcommand{\Hquad}{\hspace{0.5em}} 
 
 
 
-\usepackage{rotating}
 \usepackage{pdflscape}
 
-\usepackage{adjustbox}
 \usepackage{eso-pic}
-\usepackage{tikz}
 \usepackage{caption}
 \newcommand{\landscapepageno}{%
   \AddToShipoutPictureFG*{%
@@ -972,42 +834,24 @@
 
 
 
-% Define a new column type for centered X columns
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 
 
 
-%%% change spacing of the table
-\usepackage{lipsum}   % for generating dummy text
-\usepackage{setspace} % for changing line spacing
-\usepackage[hang,flushmargin]{footmisc}  %for footnote no space
-\usepackage{comment}
-% Manually set baseline skip for single-spacing (change 1.0 to adjust spacing)
 \renewcommand{\arraystretch}{1.5}
 
 
 
-\usepackage{import}
-\usepackage{booktabs}
 
-\usepackage{xcolor}
-\usepackage{graphics}
-\usepackage{epsfig}
-%\usepackage[margin=0.9in,footskip=0.5in]{geometry}
 \usepackage{accents}
 \newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
 \setcounter{MaxMatrixCols}{12}
 \usepackage{enumitem}
-%\usepackage{array}
 \usepackage{pifont} % for ticks
-\usepackage{multirow}
 
-%%%%%%%%%%%%%%% Essay 1 Packages
 
-%%%%%%%%%%%%%%% Essay 2 Packages %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%% Essay 3 Packages %%%%%%%%%%%%%%%%%%%%%%
 
 
 \renewcommand{\labelitemi}{}
@@ -1015,7 +859,6 @@
 {\par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\bfseries#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse} \makeatother
 
 
-\usepackage{multirow}
 \usepackage{chngcntr}
 \usepackage{apptools}
 
@@ -1032,7 +875,6 @@ pdfborder={0 0 0}
 }
 \linespread{1.2}
 \renewcommand{\baselinestretch}{1.3}
-%%%%%%%%%%%%%%%%%%%%% try to solve the cross-references%%%%%%%%%%%%%%%%%%%
 \usepackage{nameref}
 
 

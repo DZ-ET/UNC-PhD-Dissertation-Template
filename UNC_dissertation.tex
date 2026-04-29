@@ -1,76 +1,34 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Packages and commands
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[12pt,letterpaper]{uncdissertation}
-
-\usepackage{uncdissertation} 
-
-
-
-
-
-%%%%%%%%%%%%%% begin doc %%%%%%%%%%
-
+\usepackage{uncdissertation}
 
 \begin{document}
 \thesistitle{THREE ESSAYS ON ...}
-
-\thesisauthor{Author} 
+\thesisauthor{Author}
 \thesisadvisor{Committee chair}
-\thesisreadera{Committee member 1} 
-\thesisreaderb{Committee member 2} 
+\thesisreadera{Committee member 1}
+\thesisreaderb{Committee member 2}
 \thesismembera{Committee member 3}
-\thesismemberb{Committee member 4} 
+\thesismemberb{Committee member 4}
 
-
-\thesismaketitle 
+\thesismaketitle
 \thesismakecopyright
 
-
 \doublespacing
-% % % % % % % % % % % % % % % % % % % % % % % %
-% Abstract
-% % % % % % % % % % % % % % % % % % % % % % % %
-
 
 \begin{abstract}
-Influencers and digital platforms are reshaping consumer decision-making and firms’ strategies. My dissertation studies the strategic interactions between firms, influencers, consumers, and digital platforms.
+This template abstract is intentionally generic and uses placeholder text suitable for a sample dissertation. It demonstrates expected length, paragraphing, and tone without presenting substantive research claims.
 
-The first three essays take the perspective of the firm. In Essay 1, I develop a conceptual framework to integrate influencer marketing into marketing strategy. Drawing from interviews with 15 marketing managers, I identify the challenges managers face in the design and execution of influencer marketing strategy and develop a framework to help managers select the right portfolio of influencers for each stage of the customer decision-making journey.
+The first chapter provides a broad motivation for studying strategic behavior in digital markets. The second chapter introduces a stylized model of firm interaction, emphasizing how information quality and timing can shift equilibrium outcomes. The third chapter illustrates an empirical workflow with simulated data and transparent reporting conventions.
 
-In Essay 2, I study how duopoly firms optimally choose influencer effort types and product pricing strategies. The model extends horizontal and vertical differentiation thinking to the influencer context. I examine when firms should engage influencers in effort overflow—educating consumers about the product category—and when they should engage influencers in effort variety—diversifying content formats to combat creativity fatigue. My findings indicate that effort overflow increases firm profits by alleviating influencer competition in effort levels, while effort variety intensifies such competition.
+Across chapters, the sample text highlights clear argument structure: motivation, framework, analysis, and implications. It also demonstrates UNC-style manuscript assembly with front matter, chapter files, appendices, and references.
 
-In Essay 3, I employ a Bayesian persuasion perspective to study how influencers strategically design their reviews in a market where early adopters’ reviews contribute to information dissemination. I find that the optimal influencer strategy depends on the valence and informativeness of early adopters’ reviews, and I characterize the conditions under which the seller should use non-performance-based contracts or sales-based commissions. These results highlight the influencer’s role as a strategic information intermediary who corrects information distortions to facilitate product-consumer matching.
-
-
-
-Together, these essays provide a deeper understanding of how information, influencers, and algorithms interact in shaping consumer behaviors and firm decisions in the digital marketing environment.
+Overall, this document is a formatting scaffold for doctoral students. Users should replace all placeholder prose, tables, and figures with dissertation-specific content while retaining the structural elements needed for submission.
 \end{abstract}
 
-
-% % % % % % % % % % % % % % % % % % % % % % % %
-% optional dedication and acknowledgments
-% % % % % % % % % % % % % % % % % % % % % % % %
-
-%\begin{dedication}
-%\begin{center}
-%\textit{Your dedication goes here.}
-%\end{center}
-%\end{dedication}
-
-    \begin{acknowledgments}
-
-
+\begin{acknowledgments}
 In the process of writing this dissertation...
-
-
 \end{acknowledgments}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Table of contents and lists
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \begin{spacing}{1}
 \begingroup
@@ -90,54 +48,26 @@ In the process of writing this dissertation...
 \endgroup
 \end{spacing}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Begin manuscript
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{doublespace}
 \cleardoublepage
 \pagenumbering{arabic}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Chapter 1
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{singlespace}
 \chapter{TITLE OF CHAPTER 1}
 \end{singlespace}\label{chap1}
-
 \input{ch1}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Chapter 2
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{singlespace}
 \chapter{TITLE OF CHAPTER 2}\label{chap2}
 \end{singlespace}
-
-
-
 \input{ch2}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Chapter 3
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{singlespace}
 \chapter{TITLE OF CHAPTER 3 IS GENERATED BY AI SO IT IS EXTRAORDINARILY LONG}\label{chap3}
 \end{singlespace}
-
 \input{ch3}
 
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Appendix A
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titlespacing{\chapter}{0pt}{-.375in}{12pt} %This changes top margin for first page of Appendices and Bibiography to 1", the first pages of the chapters have a 2" top margin
-
+\titlespacing{\chapter}{0pt}{-.375in}{12pt}
 \appendix
 \renewcommand{\appendixname}{APPENDIX}
 \renewcommand{\cftchappresnum}{APPENDIX\ }
@@ -168,10 +98,6 @@ In the process of writing this dissertation...
 \end{singlespace}
 \input{appA_Chapter3}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \clearpage
 \addcontentsline{toc}{chapter}{REFERENCES}
 \begin{singlespace}
@@ -179,10 +105,5 @@ In the process of writing this dissertation...
 \bibliography{Bibliography}
 \end{singlespace}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% End the document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{doublespace}
 \end{document}
