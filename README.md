@@ -26,6 +26,7 @@ Recommended options:
 - Windows: MiKTeX or TeX Live
 - Linux: TeX Live
 - Overleaf: upload the full repository and set `UNC_dissertation.tex` as the main file
+- OpenAI Prism: upload the full repository and set `UNC_dissertation.tex` as the main file
 
 `latexmk` is optional but recommended because it automatically runs LaTeX and BibTeX enough times to resolve citations, cross-references, the table of contents, and lists of figures/tables.
 
